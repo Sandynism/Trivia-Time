@@ -16,12 +16,64 @@
     display: none;
 }
 
-.questions {
+.questionsBox {
     width: 550px;
     height: 450px;
     float: right;
-    border: 1px solid silver;
-    border-radius: 5px;
-    background-color: #39ecdd;
-    color: darkgray
+    border: 2px solid silver;
+    border-radius: 50px;
+    box-shadow: 10px 15px 15px silver;
+    /* background-color: #4b91fa; */
+    background-color: rgb(123, 184, 241);
+    text-align: center;
+}
+
+.questionsBox h1 {
+    color: white;
+    font-family: 'Cabin Sketch';
+    /* text-align: center; */
+}
+
+#question {
+    color: white;
+    font-family: 'Handlee';
+    font-size: 25px;
+}
+
+#choices {
+    color: white;
+    font-family: 'Handlee';
+    font-size: 20px;
+}
+
+#btn0, #btn1, #btn2, #btn3 {
+    background-color: #acc7f0;
+    width: 250px;
+    font-size: 20px;
+    color: white;
+    border: 1px solid #1d3c6a;
+    border-radius: 50px;
+    margin: 10px 40px 10px 0;
+    padding: 10px 10px;
+}
+
+#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
+    cursor: pointer;
+    /* background-color: rgb(123, 184, 241); */
+    background-color: #4b91fa;
+}
+
+#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
+    outline: 0;
+}
+
+#progress {
+    color: white;
+    font-family: 'Handlee';
+    font-size: 15px;
+}
+
+#timer {
+    font-family: 'Unica One';
+    font-size: 20px;
 }

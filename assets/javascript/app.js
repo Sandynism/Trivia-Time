@@ -31,8 +31,8 @@ let questionsObject = [{
     correct: "Turquoise"
 }, {
     question: "How many concerts has Sandy been to?",
-    answers: ["", "", "", ""],
-    correct: ""
+    answers: ["22", "1", "134", "368"],
+    correct: "134"
 }, {
     question: "Who is Sandy's favorite musical act?",
     answers: ["Illenium", "The Weeknd", "Ed Sheeran", "Above & Beyond"],
@@ -46,16 +46,24 @@ $(document).ready(function () {
     $("#startGame").click(function () {
         $(".btn-secondary").addClass("disappear")
         $(".btn-outline-secondary").removeClass("disappear")
-        $(".questions").removeClass("disappear")
+        $(".questionsBox").removeClass("disappear")
         $("#timer").removeClass("disappear")
+        timer()
     })
 
-    $(".question").text(questionsObject[0].question)
+    $("#resetGame").click(function () {
+        // resettimer()
+    })
+
+    //display question in container
+    $("#question").text(questionsObject[0].question)
 
     let options = questionsObject[0].answers
     for (let i = 0; i < options.length; i++) {
-        $('.choices').append("<div>" + options[i] + "</div>")
+        // $('#choices').append("<div>" + options[i] + "</div>")
+        $("span", this).text(options[i])
     }
+
     
     //shows the remaining seconds left
     function timer() {
@@ -63,13 +71,18 @@ $(document).ready(function () {
 		function twentySeconds() {
 			if (countdown === 0) {
                 clearInterval(counter)
-                //next question
+                //next question function
 			} else if (countdown > 0) {
 				countdown--
 			}
 			$("#timer").html(countdown + " Seconds Remaining")
 		}
 	}
-    timer()
+    
+    //display next question after time runs out or user pick is selected
+    function nextQuestion() {
+
+    }
+
 
 })
