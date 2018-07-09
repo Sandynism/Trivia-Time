@@ -1,0 +1,27 @@
+.introPage p {
+    font-family: 'Handlee', cursive;
+    font-size: 80px;
+    margin-top: 100px;
+}
+
+#startGame {
+    font-family: 'Merienda'
+}
+
+#resetGame {
+    font-family: 'Merienda'
+}
+
+.disappear {
+    display: none;
+}
+
+.questions {
+    width: 550px;
+    height: 450px;
+    float: right;
+    border: 1px solid silver;
+    border-radius: 5px;
+    background-color: #39ecdd;
+    color: darkgray
+}

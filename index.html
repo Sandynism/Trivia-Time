@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Markazi+Text|Old+Standard+TT" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Handlee|Merienda|Unica+One" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,19 +15,52 @@
 
 <body>
 
-    <div class="container">
+    <div class="container introPage">
         <div class="row">
-            <div class="col-md-6">
-
-
+            <div class="col-md-12">
+                <p>Trivia Time</p>
+                <button id="startGame" class="btn btn-lg btn-secondary">
+                    Start Trivia
+                </button>
+                <button id="resetGame" class="btn btn-lg btn-outline-secondary disappear">
+                    Reset Game
+                </button>
             </div>
         </div>
     </div>
 
+    <div class="container triviaPage">
+        <div class="row">
+            <div class="col-md-4">
+                <p id="timer" class="disappear"></p>
+            </div>
+            <div class="col-md-8 questions disappear">
+                <div class="question"></div>
+                <div class="choices"></div>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="assets/javascript/app.js"></script>
+ 
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="assets/javascript/app.js"></script>
 
 </body>
 
 </html>
+
+
+<!-- Gameplan
+
+Object with questions & answers
+jQuery to push into the html container 
+Need a win, lose or unresponsive 'alert' of some sort
+Correct or Incorrect tracker for duration of the game
+Summary of trivia game at the end
+Set Interval, Clear Interval, Timer functions
+Start Gameplay 
+Reset Gameplay
+End Gameplay Screen
+ -->
