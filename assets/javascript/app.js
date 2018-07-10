@@ -5,6 +5,7 @@ let unresponsive = 0
 let countdown = 20
 let counter = 0
 let userSelection
+let questionCount = 0
 let questionsObject = [{
     question: "What does Sandy have every single morning?",
     answers: ["Bad Breath", "Green Juice", "Chicken & Waffles", "A Stretch Session"],
@@ -14,7 +15,7 @@ let questionsObject = [{
     answers: ["Greece", "Japan", "Thailand", "Australia"],
     correct: "Greece"
 }, {
-    question: "What is the oldest condiment in Sandy's fridge right now?",
+    question: "What is the oldest condiment in Sandy's fridge?",
     answers: ["Dijon Mustard", "Sriracha", "Peter Lugers Steak Sauce", "Ranch Dressing"],
     correct: "Ranch Dressing"
 }, {
@@ -53,22 +54,63 @@ $(document).ready(function () {
         $(".btn-outline-secondary").removeClass("disappear")
         $(".questionsBox").removeClass("disappear")
         $("#timer").removeClass("disappear")
+        getQuestion()
         timer()
     })
 
     $("#resetGame").click(function () {
-        // resettimer()
+        questionCount = 0
+        correctAnswers = 0
+        incorrectAnswers = 0
+        unresponsive = 0
+        countdown = 20
+        getQuestion()
+        timer()
+    })
+
+    //check if user selection is correct or incorrect & track it
+    $("#choices button").on("click", function () {
+        userSelection = $(this).html()
+        console.log(userSelection)
+
+        if (userSelection === questionsObject[questionCount].correct) {
+            correctAnswers++
+            nextQuestion()
+            // clearInterval(countdown)
+            // setTimeout(nextQuestion, 3000)
+        } else if (userSelection !== questionsObject[questionCount].correct) {
+            incorrectAnswers++
+            nextQuestion()
+            // clearInterval(countdown)
+            // setTimeout(nextQuestion, 3000)
+        } else {
+            console.log("Unanswered")
+        }
     })
 
     //display question in container
-    $("#question").text(questionsObject[0].question)
+    function getQuestion() {
 
-    let options = questionsObject[0].answers
-    for (let i = 0; i < options.length; i++) {
-        $(`#btn${i}`).html(options[i])
-        // $("span", this).text(options[i])
+        let questionText = questionsObject[questionCount].question
+        $("#question").html(questionText)
+
+        let options = questionsObject[questionCount].answers
+        for (let i = 0; i < options.length; i++) {
+            $(`#btn${i}`).html(options[i])
+        }
     }
 
+     //display next question after time runs out or user pick is selected
+     function nextQuestion() {
+        if (questionCount < questionsObject.length - 1) {
+            questionCount++
+            getQuestion()
+            countdown = 20
+            //clearInterval(countdown)
+            timer()
+            
+        }
+    }
 
     //shows the remaining seconds left
     function timer() {
@@ -76,7 +118,7 @@ $(document).ready(function () {
         function twentySeconds() {
             if (countdown === 0) {
                 clearInterval(counter)
-                //next question function
+                nextQuestion()
             } else if (countdown > 0) {
                 countdown--
             }
@@ -84,26 +126,12 @@ $(document).ready(function () {
         }
     }
 
-    //check if user selection is correct or incorrect & track it
-    $("#choices button").on("click", function () {
-        userSelection = $(this).html()
-        console.log(userSelection)
 
-        if (userSelection === questionsObject[0].correct) {
-            console.log("yaaaaaas")
-            correctAnswers += 1
-        } else if (userSelection !== questionsObject[0].correct) {
-            console.log("Heck No!")
-            incorrectAnswers += 1
-        } else {
-            console.log("Unanswered")
-        }
-    })
-
-    //display next question after time runs out or user pick is selected
-    function nextQuestion() {
-
-    }
+    //use to display pace of trivia
+    $("#progress" ).html(function() {
+        let count = questionsObject[questionCount].indexOf + " of " + $(questionsObject).length;
+        return "<p>Question " + count + "</p>";
+      })
 
 
     //animated intro page welcome message
@@ -204,8 +232,8 @@ $(document).ready(function () {
         m.init()
     }
 
-    console.clear()
-    var messenger = new Messenger($('#animation'))
+    // console.clear() //this is messing up the load fix it
+    let messenger = new Messenger($('#animation'))
 
 
 })
