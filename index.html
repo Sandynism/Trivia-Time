@@ -18,12 +18,12 @@
     <div class="container introPage">
         <div class="row">
             <div class="col-md-12">
-                <p>Trivia Time</p>
+                <p>Trivial Pursuit</p>
                 <button id="startGame" class="btn btn-lg btn-secondary">
-                    Start Trivia
+                    Start
                 </button>
                 <button id="resetGame" class="btn btn-lg btn-outline-secondary disappear">
-                    Reset Game
+                    Reset
                 </button>
             </div>
         </div>
@@ -31,23 +31,24 @@
 
     <div class="container triviaPage">
         <div class="row">
-            <div class="col-md-4">
+            <!-- <div class="col-md-3">
                 <p id="timer" class="disappear"></p>
-            </div>
+            </div> -->
             <div class="col-md-8 questionsBox disappear">
                 <h1>Test Your Knowledge</h1>
                 <hr style="margin-bottom: 30px">
                 <div id="question"></div>
                 <hr style="margin-bottom: 50px">
                 <div id="choices">
-                    <button id="btn0"><span id="choice0"></span></button>
-                    <button id="btn1"><span id="choice1"></span></button>
-                    <button id="btn2"><span id="choice2"></span></button>
-                    <button id="btn3"><span id="choice3"></span></button>
+                    <button id="btn0"></button>
+                    <button id="btn1"></button>
+                    <button id="btn2"></button>
+                    <button id="btn3"></button>
                 </div>
-                <hr style="margin-top: 70px">
+                <p id="timer"></p>
+                <hr style="margin-top: 20px">
                 <footer>
-                    <p id="progress">Question x of y.</p>
+                    <p id="progress">Question # of #.</p>
                 </footer>
             </div>
         </div>

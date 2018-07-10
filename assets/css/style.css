@@ -1,31 +1,38 @@
+body {
+    background: url("../images/greecebg.jpg") no-repeat center center fixed;
+
+}
+
+.introPage {
+    margin-left: 120px;
+}
+
 .introPage p {
-    font-family: 'Handlee', cursive;
+    font-family: 'Cabin Sketch';
     font-size: 80px;
-    margin-top: 100px;
+    /* margin-top: 100px; */
 }
 
-#startGame {
-    font-family: 'Merienda'
+#startGame, #resetGame {
+    font-family: 'Merienda';
+    letter-spacing: 2px;
 }
 
-#resetGame {
-    font-family: 'Merienda'
-}
 
 .disappear {
     display: none;
 }
 
 .questionsBox {
-    width: 550px;
+    width: 350px;
     height: 450px;
-    float: right;
     border: 2px solid silver;
     border-radius: 50px;
-    box-shadow: 10px 15px 15px silver;
+    box-shadow: 10px 10px 10px rgb(162, 184, 194);
     /* background-color: #4b91fa; */
     background-color: rgb(123, 184, 241);
     text-align: center;
+    margin: 0 auto;
 }
 
 .questionsBox h1 {
@@ -36,18 +43,20 @@
 
 #question {
     color: white;
-    font-family: 'Handlee';
+    font-family: 'Cabin Sketch';
     font-size: 25px;
+    letter-spacing: 2px;
 }
 
 #choices {
     color: white;
-    font-family: 'Handlee';
+    font-family: 'Cabin Sketch';
     font-size: 20px;
+    letter-spacing: 1px;
 }
 
 #btn0, #btn1, #btn2, #btn3 {
-    background-color: #acc7f0;
+    background-color: #4b91fa;
     width: 250px;
     font-size: 20px;
     color: white;
@@ -60,7 +69,7 @@
 #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
     /* background-color: rgb(123, 184, 241); */
-    background-color: #4b91fa;
+    background-color: #acc7f0;
 }
 
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
@@ -71,9 +80,11 @@
     color: white;
     font-family: 'Handlee';
     font-size: 15px;
+    margin-top: 10px;
 }
 
 #timer {
     font-family: 'Unica One';
-    font-size: 20px;
+    font-size: 30px;
+    /* margin-top: 200px; */
 }

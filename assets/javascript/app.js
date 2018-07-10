@@ -37,8 +37,12 @@ let questionsObject = [{
     question: "Who is Sandy's favorite musical act?",
     answers: ["Illenium", "The Weeknd", "Ed Sheeran", "Above & Beyond"],
     correct: "Above & Beyond"
+}, {
+    question: "What are the names of Sandy's two dogs?",
+    answers: ["Mike & Ike", "Choco & Aimee", "Prince & Princess", "Marshy & Mallo"],
+    correct: "Choco & Aimee"
 }]
-//rock band, game, names of sandys favorite dogs
+
 
 
 $(document).ready(function () {
@@ -60,8 +64,8 @@ $(document).ready(function () {
 
     let options = questionsObject[0].answers
     for (let i = 0; i < options.length; i++) {
-        // $('#choices').append("<div>" + options[i] + "</div>")
-        $("span", this).text(options[i])
+        $(`#btn${i}`).html(options[i])
+        // $("span", this).text(options[i])
     }
 
     
@@ -79,10 +83,26 @@ $(document).ready(function () {
 		}
 	}
     
+    //check if user selection is correct or incorrect & track it
+    $("#choices button").on("click", function () {
+        userSelection = $(this).html()
+        console.log(userSelection)
+
+        if (userSelection === questionsObject[0].correct) {
+            console.log("yaaaaaas")
+            correctAnswers+= 1
+        } else if (userSelection !== questionsObject[0].correct) {
+            console.log("Heck No!")
+            incorrectAnswers+= 1
+        } else {
+            console.log("Unanswered")
+        }
+    })
+
     //display next question after time runs out or user pick is selected
     function nextQuestion() {
 
     }
-
+  
 
 })
