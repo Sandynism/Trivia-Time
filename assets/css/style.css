@@ -1,5 +1,6 @@
 body {
-    background: url("../images/greecebg.jpg") no-repeat center center fixed;
+    background: url("../images/marblebg.jpg");
+    /* no-repeat center center fixed; */
 
 }
 
@@ -7,15 +8,33 @@ body {
     margin-left: 120px;
 }
 
-.introPage p {
+.title {
     font-family: 'Cabin Sketch';
     font-size: 80px;
-    /* margin-top: 100px; */
 }
 
+#animation {
+    position: absolute;
+    /* top: 530px; */
+    top: 200px;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font-family: monospace;
+    /* font-size: 30px; */
+    font-size: 60px;
+    letter-spacing: 8px;
+    white-space: nowrap;
+    text-shadow: 0 2px 2px rgba(#000, 0.9);
+  }
+
 #startGame, #resetGame {
-    font-family: 'Merienda';
+    font-family: 'Cabin Sketch';
     letter-spacing: 2px;
+    font-size: 22px;
+    position: fixed;
+    text-align: center;
+    left: 590px;
+    bottom: 55px;
 }
 
 
@@ -26,11 +45,12 @@ body {
 .questionsBox {
     width: 350px;
     height: 450px;
-    border: 2px solid silver;
+    border: 2px solid rgb(248, 243, 246);
+    /* border-color: transparent; */
     border-radius: 50px;
-    box-shadow: 10px 10px 10px rgb(162, 184, 194);
-    /* background-color: #4b91fa; */
-    background-color: rgb(123, 184, 241);
+    box-shadow: 20px 10px 10px rgb(248, 246, 248);
+    /* background: url("../images/colormarblebg.jpg"); */
+    background-color: rgb(221, 198, 217);
     text-align: center;
     margin: 0 auto;
 }
@@ -56,20 +76,21 @@ body {
 }
 
 #btn0, #btn1, #btn2, #btn3 {
-    background-color: #4b91fa;
+    background-color: #ba9bbb;
     width: 250px;
     font-size: 20px;
     color: white;
-    border: 1px solid #1d3c6a;
+    border: 1px solid #f0e7f1;
+    border-color: transparent;
     border-radius: 50px;
-    margin: 10px 40px 10px 0;
+    margin: 10px 30px 10px 30px;
     padding: 10px 10px;
 }
 
 #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
-    /* background-color: rgb(123, 184, 241); */
-    background-color: #acc7f0;
+    background-color: rgb(235, 195, 202)
+    /* background-color: #acc7f0; */
 }
 
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
@@ -78,13 +99,14 @@ body {
 
 #progress {
     color: white;
-    font-family: 'Handlee';
-    font-size: 15px;
-    margin-top: 10px;
+    font-family: 'Cabin Sketch';
+    font-size: 18px;
+    
 }
 
 #timer {
     font-family: 'Unica One';
     font-size: 30px;
+    color: rgb(249, 246, 250)
     /* margin-top: 200px; */
 }
