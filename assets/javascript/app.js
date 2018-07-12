@@ -8,7 +8,7 @@ let userSelection
 let questionCount = 0
 let questionsObject = [{
     question: "What does Sandy have every single morning?",
-    answers: ["Bad Breath", "Green Juice", "Chicken & Waffles", "A Stretch Session"],
+    answers: ["Bad Breath", "Green Juice", "Chicken and Waffles", "A Stretch Session"],
     correct: "Green Juice"
 }, {
     question: "What is Sandy's favorite visited country?",
@@ -36,14 +36,13 @@ let questionsObject = [{
     correct: "134"
 }, {
     question: "Who is Sandy's favorite musical act?",
-    answers: ["Illenium", "The Weeknd", "Ed Sheeran", "Above & Beyond"],
-    correct: "Above & Beyond"
+    answers: ["Illenium", "The Weeknd", "Ed Sheeran", "Above and Beyond"],
+    correct: "Above and Beyond"
 }, {
     question: "What are the names of Sandy's two dogs?",
-    answers: ["Mike & Ike", "Choco & Aimee", "Prince & Princess", "Marshy & Mallo"],
-    correct: "Choco & Aimee"
+    answers: ["Mike \u2665 Ike", "Choco \u2665 Aimee", "Prince \u2665 Princess", "Marshy \u2665 Mallo"],
+    correct: "Choco \u2665 Aimee"
 }]
-
 
 
 $(document).ready(function () {
@@ -75,13 +74,13 @@ $(document).ready(function () {
 
         if (userSelection === questionsObject[questionCount].correct) {
             correctAnswers++
+            console.log(correctAnswers)
             nextQuestion()
-            // clearInterval(countdown)
             // setTimeout(nextQuestion, 3000)
         } else if (userSelection !== questionsObject[questionCount].correct) {
             incorrectAnswers++
+            console.log(incorrectAnswers)
             nextQuestion()
-            // clearInterval(countdown)
             // setTimeout(nextQuestion, 3000)
         } else {
             console.log("Unanswered")
@@ -100,20 +99,27 @@ $(document).ready(function () {
         }
     }
 
-     //display next question after time runs out or user pick is selected
-     function nextQuestion() {
+    //display next question after time runs out or user pick is selected
+    function nextQuestion() {
         if (questionCount < questionsObject.length - 1) {
-            questionCount++
+            questionCount++ //why doesnt it increment the count
             getQuestion()
             countdown = 20
-            //clearInterval(countdown)
             timer()
-            
         }
     }
 
+    // let correctAnswers = correctAnswers.text("\u2665") could i display the # count as a heart instead?
+    
+    //use to display pace of trivia
+    $("#progress").html(function () {
+        let count = (questionCount + 1) + " of " + $(questionsObject).length;
+        return "<p>Question " + count + "</p>";
+    })
+
     //shows the remaining seconds left
     function timer() {
+        clearInterval(counter)
         counter = setInterval(twentySeconds, 1000);
         function twentySeconds() {
             if (countdown === 0) {
@@ -127,14 +133,9 @@ $(document).ready(function () {
     }
 
 
-    //use to display pace of trivia
-    $("#progress" ).html(function() {
-        let count = questionsObject[questionCount].indexOf + " of " + $(questionsObject).length;
-        return "<p>Question " + count + "</p>";
-      })
 
 
-    //animated intro page welcome message
+    // animated intro page welcome message
     var Messenger = function (el) {
         'use strict'
         var m = this
