@@ -87,6 +87,7 @@ $(document).ready(function () {
         }
     })
 
+    // let correctAnswers = correctAnswers.text("\u2665") could i display the # count as a heart instead?
     //display question in container
     function getQuestion() {
 
@@ -97,25 +98,22 @@ $(document).ready(function () {
         for (let i = 0; i < options.length; i++) {
             $(`#btn${i}`).html(options[i])
         }
+        //use to display pace of trivia
+        $("#progress").html(function () {
+            let count = (questionCount + 1) + " of " + $(questionsObject).length;
+            return "<p>Question " + count + "</p>";
+        })
     }
 
     //display next question after time runs out or user pick is selected
     function nextQuestion() {
         if (questionCount < questionsObject.length - 1) {
-            questionCount++ //why doesnt it increment the count
+            questionCount++
             getQuestion()
             countdown = 20
             timer()
         }
     }
-
-    // let correctAnswers = correctAnswers.text("\u2665") could i display the # count as a heart instead?
-    
-    //use to display pace of trivia
-    $("#progress").html(function () {
-        let count = (questionCount + 1) + " of " + $(questionsObject).length;
-        return "<p>Question " + count + "</p>";
-    })
 
     //shows the remaining seconds left
     function timer() {
@@ -132,7 +130,7 @@ $(document).ready(function () {
         }
     }
 
-
+    
 
 
     // animated intro page welcome message
