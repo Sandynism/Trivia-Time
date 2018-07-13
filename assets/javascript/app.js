@@ -44,6 +44,8 @@ let questionsObject = [{
     correct: "Choco \u2665 Aimee"
 }]
 
+let hover = new Audio("assets/audio/hover.wav")
+let select = new Audio("assets/audio/select.wav")
 
 $(document).ready(function () {
 
@@ -69,6 +71,7 @@ $(document).ready(function () {
 
     //check if user selection is correct or incorrect & track it
     $("#choices button").on("click", function () {
+        select.play()
         userSelection = $(this).html()
         console.log(userSelection)
 
@@ -85,6 +88,10 @@ $(document).ready(function () {
         } else {
             console.log("Unanswered")
         }
+    })
+
+    $("#choices button").mouseenter(function() {
+        hover.play()
     })
 
     // let correctAnswers = correctAnswers.text("\u2665") could i display the # count as a heart instead?
@@ -130,7 +137,7 @@ $(document).ready(function () {
         }
     }
 
-    
+
 
 
     // animated intro page welcome message
