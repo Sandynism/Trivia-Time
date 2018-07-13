@@ -52,21 +52,15 @@ $(document).ready(function () {
     $("#startGame").click(function () {
         $(".btn-secondary").addClass("disappear")
         $("#footer").addClass("disappear")
+        $("#animation").addClass("disappear")
         $(".btn-outline-secondary").removeClass("disappear")
         $(".questionsBox").removeClass("disappear")
         $("#timer").removeClass("disappear")
-        getQuestion()
-        timer()
+        startGame()
     })
 
     $("#resetGame").click(function () {
-        questionCount = 0
-        correctAnswers = 0
-        incorrectAnswers = 0
-        unresponsive = 0
-        countdown = 20
-        getQuestion()
-        timer()
+        startGame()
     })
 
     //check if user selection is correct or incorrect & track it
@@ -76,17 +70,13 @@ $(document).ready(function () {
         console.log(userSelection)
 
         if (userSelection === questionsObject[questionCount].correct) {
-            correctAnswers++
-            console.log(correctAnswers)
-            nextQuestion()
-            // setTimeout(nextQuestion, 3000)
+            rightPick()
+            // nextQuestion()
         } else if (userSelection !== questionsObject[questionCount].correct) {
-            incorrectAnswers++
-            console.log(incorrectAnswers)
-            nextQuestion()
-            // setTimeout(nextQuestion, 3000)
+            wrongPick()
+            // nextQuestion()
         } else {
-            console.log("Unanswered")
+            noPick()
         }
     })
 
@@ -94,6 +84,18 @@ $(document).ready(function () {
         hover.play()
     })
 
+    function startGame () {
+        getQuestion()
+        resetGame()
+        timer()
+    }
+
+    function resetGame () {
+        questionCount = 0
+        correctAnswers = 0
+        incorrectAnswers = 0
+        unresponsive = 0
+    }
     // let correctAnswers = correctAnswers.text("\u2665") could i display the # count as a heart instead?
     //display question in container
     function getQuestion() {
@@ -120,6 +122,27 @@ $(document).ready(function () {
             countdown = 20
             timer()
         }
+    }
+
+    function rightPick() {
+        correctAnswers++
+        let winDisplay = "<p class='winDisplay'>That is the correct answer!"
+        $(".questionsBox").html(winDisplay)
+        setTimeout(nextQuestion, 2000)
+    }
+
+    function wrongPick() {
+        incorrectAnswers++
+        let lossDisplay = "<p class='lossDisplay'>That is the wrong answer! The correct answer is xxxxx"
+        $(".questionsBox").html(lossDisplay)
+        setTimeout(nextQuestion, 2000)
+    }
+
+    function noPick() {
+        unresponsive++
+        let unresDisplay = "p class='unresDiplay'>You have not chosen a selection!"
+        $(".questionsBox").html(unresDisplay)
+        setTimeout(nextQuestion, 2000)
     }
 
     //shows the remaining seconds left

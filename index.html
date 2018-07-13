@@ -17,18 +17,18 @@
 
     <div class="container introPage">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <p class="title">Trivial Pursuit</p>
 
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12">
                 <button id="startGame" class="btn btn-lg btn-secondary">
                     Enter
                 </button>
                 <button id="resetGame" class="btn btn-lg btn-outline-secondary disappear">
-                    Reset
+                    Restart
                 </button>
                 <div>
                     <p id="animation"></p>
@@ -39,16 +39,13 @@
 
     <div class="container triviaPage">
         <div class="row">
-            <!-- <div class="col-md-3">
-                <p id="timer" class="disappear"></p>
-            </div> -->
-            <div class="col-md-8 questionsBox disappear">
+            <div class="col-md-8 col-sm-8 questionsBox disappear">
                 <h1>#HackSociety
                     <i class="far fa-heart"></i>
                 </h1>
-                <hr style="margin-bottom: 30px">
+                <hr id="hr1" style="margin-bottom: 2px">
                 <div id="question"></div>
-                <hr style="margin-bottom: 50px">
+                <hr id="hr2">
                 <div id="choices">
                     <button id="btn0"></button>
                     <button id="btn1"></button>
@@ -56,16 +53,13 @@
                     <button id="btn3"></button>
                 </div>
                 <p id="timer"></p>
-                <hr style="margin-top: 10px">
+                <hr id="hr3">
                 <footer>
                     <p id="progress"></p>
                 </footer>
             </div>
         </div>
     </div>
-
-
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
@@ -80,7 +74,6 @@
 Object with questions & answers
 jQuery to push into the html container 
 Randomize questions**
-Current Question count is not dispalying correctly on questionBox
 Need a win, lose or unresponsive 'alert' of some sort**
 Correct or Incorrect tracker for duration of the game**
 Summary of trivia game at the end**
