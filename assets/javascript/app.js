@@ -2,10 +2,11 @@
 let correctAnswers = 0
 let incorrectAnswers = 0
 let unresponsive = 0
-let countdown = 20
-let counter = 0
+let countdown = 15
 let userSelection
 let questionCount = 0
+let gameTimer
+
 let questionsObject = [{
     question: "What does Sandy have every single morning?",
     answers: ["Bad Breath", "Green Juice", "Chicken and Waffles", "A Stretch Session"],
@@ -57,9 +58,12 @@ $(document).ready(function () {
         $(".questionsBox").removeClass("disappear")
         $("#timer").removeClass("disappear")
         startGame()
+        gameTimer = setInterval(timer, 1000)
     })
 
     $("#resetGame").click(function () {
+        $('.showAnswer').hide()
+        $('.questionsBox').show()
         startGame()
     })
 
@@ -67,17 +71,12 @@ $(document).ready(function () {
     $("#choices button").on("click", function () {
         select.play()
         userSelection = $(this).html()
-        console.log(userSelection)
 
         if (userSelection === questionsObject[questionCount].correct) {
-            rightPick()
-            // nextQuestion()
-        } else if (userSelection !== questionsObject[questionCount].correct) {
-            wrongPick()
-            // nextQuestion()
+            showPick('correct')
         } else {
-            noPick()
-        }
+            showPick('wrong')
+        } 
     })
 
     $("#choices button").mouseenter(function() {
@@ -85,21 +84,16 @@ $(document).ready(function () {
     })
 
     function startGame () {
-        getQuestion()
-        resetGame()
-        timer()
-    }
-
-    function resetGame () {
         questionCount = 0
         correctAnswers = 0
         incorrectAnswers = 0
         unresponsive = 0
+        getQuestion()
+        resetTimer()
     }
-    // let correctAnswers = correctAnswers.text("\u2665") could i display the # count as a heart instead?
+
     //display question in container
     function getQuestion() {
-
         let questionText = questionsObject[questionCount].question
         $("#question").html(questionText)
 
@@ -112,157 +106,102 @@ $(document).ready(function () {
             let count = (questionCount + 1) + " of " + $(questionsObject).length;
             return "<p>Question " + count + "</p>";
         })
+
     }
 
     //display next question after time runs out or user pick is selected
     function nextQuestion() {
         if (questionCount < questionsObject.length - 1) {
+            $('.questionsBox').show()
+            $('.showAnswer').hide()
             questionCount++
+
             getQuestion()
-            countdown = 20
-            timer()
+        } else {
+            endGame()
         }
     }
 
-    function rightPick() {
-        correctAnswers++
-        let winDisplay = "<p class='winDisplay'>That is the correct answer!"
-        $(".questionsBox").html(winDisplay)
-        setTimeout(nextQuestion, 2000)
+    function showPick(result) {
+
+        resetTimer()
+        let correct = questionsObject[questionCount].correct
+        let display
+
+        if (result === 'noPick') {
+            unresponsive++
+            display = `<p>You have not chosen a selection! But the correct answer is ${correct}.`
+        } else if (result === 'correct') {
+            correctAnswers++
+            display = `<p>Yay! ${correct} is the right answer!`
+        } else if (result === 'wrong') {
+            incorrectAnswers++
+            display = `<p>Wrong, You chose ${userSelection}! The correct answer is ${correct}.`
+        }
+
+        $('.showAnswer').html(display)
+        $('.showAnswer p').addClass("display")
+        $('.showAnswer').show()
+        $('.questionsBox').hide()
+        setTimeout(nextQuestion, 1500)
     }
 
-    function wrongPick() {
-        incorrectAnswers++
-        let lossDisplay = "<p class='lossDisplay'>That is the wrong answer! The correct answer is xxxxx"
-        $(".questionsBox").html(lossDisplay)
-        setTimeout(nextQuestion, 2000)
-    }
-
-    function noPick() {
-        unresponsive++
-        let unresDisplay = "p class='unresDiplay'>You have not chosen a selection!"
-        $(".questionsBox").html(unresDisplay)
-        setTimeout(nextQuestion, 2000)
+    function resetTimer() {
+        countdown = 15
     }
 
     //shows the remaining seconds left
     function timer() {
-        clearInterval(counter)
-        counter = setInterval(twentySeconds, 1000);
-        function twentySeconds() {
-            if (countdown === 0) {
-                clearInterval(counter)
-                nextQuestion()
-            } else if (countdown > 0) {
-                countdown--
-            }
-            $("#timer").html(countdown + " Seconds Remaining")
+        if (questionCount === questionsObject.length) {
+            return endGame()
         }
+
+        if (countdown === 0) {
+            showPick('noPick')
+        } else if (countdown > 0) {
+            countdown-= 1
+        }
+        
+        $("#timer").html(countdown + " Seconds Remaining")
     }
 
-
-
-
-    // animated intro page welcome message
-    var Messenger = function (el) {
-        'use strict'
-        var m = this
-
-        m.init = function () {
-            m.codeletters = "&#*+%?£@§$"
-            m.message = 0
-            m.current_length = 0
-            m.fadeBuffer = false
-            m.messages = [
-                'HELLO FRIEND',
-                'BONJOUR LES AMIS',
-                '你好朋友',
-                'HOLA AMIGO',
-                '안녕 친구',
-                'HALLO MEIN FREUND',
-                'こんにちは友人',
-                'مرحبا يا صديقي',
-                'CIAO AMICO',
-                'हैलो दोस्त'
-            ]
-
-            setTimeout(m.animateIn, 100)
-        }
-
-        m.generateRandomString = function (length) {
-            var random_text = ''
-            while (random_text.length < length) {
-                random_text += m.codeletters.charAt(Math.floor(Math.random() * m.codeletters.length))
-            }
-
-            return random_text
-        }
-
-        m.animateIn = function () {
-            if (m.current_length < m.messages[m.message].length) {
-                m.current_length = m.current_length + 2
-                if (m.current_length > m.messages[m.message].length) {
-                    m.current_length = m.messages[m.message].length
-                }
-
-                var message = m.generateRandomString(m.current_length)
-                $(el).html(message)
-
-                setTimeout(m.animateIn, 20)
-            } else {
-                setTimeout(m.animateFadeBuffer, 20)
-            }
-        }
-
-        m.animateFadeBuffer = function () {
-            if (m.fadeBuffer === false) {
-                m.fadeBuffer = []
-                for (var i = 0; i < m.messages[m.message].length; i++) {
-                    m.fadeBuffer.push({ c: (Math.floor(Math.random() * 12)) + 1, l: m.messages[m.message].charAt(i) })
-                }
-            }
-
-            var do_cycles = false
-            var message = ''
-
-            for (var i = 0; i < m.fadeBuffer.length; i++) {
-                var fader = m.fadeBuffer[i]
-                if (fader.c > 0) {
-                    do_cycles = true
-                    fader.c--;
-                    message += m.codeletters.charAt(Math.floor(Math.random() * m.codeletters.length))
-                } else {
-                    message += fader.l
-                }
-            }
-
-            $(el).html(message)
-
-            if (do_cycles === true) {
-                setTimeout(m.animateFadeBuffer, 50)
-            } else {
-                setTimeout(m.cycleText, 2000)
-            }
-        };
-
-        m.cycleText = function () {
-            m.message = m.message + 1
-            if (m.message >= m.messages.length) {
-                m.message = 0
-            }
-
-            m.current_length = 0
-            m.fadeBuffer = false
-            $(el).html('')
-
-            setTimeout(m.animateIn, 200)
-        }
-
-        m.init()
+    function endGame() {
+        clearInterval(gameTimer)
+        let display 
+        display = `<p>Correct: ${correctAnswers}! <br> Wrong: ${incorrectAnswers} <br> Unaswered: ${unresponsive}</p>`
+        $('.showAnswer').html(display)
+        $('.showAnswer p').addClass("display")
+        $("#resetGame").hide()
     }
-
-    // console.clear() //this is messing up the load fix it
-    let messenger = new Messenger($('#animation'))
-
-
 })
+
+    // function rightPick() {
+    //     correctAnswers++
+    //     let correct = questionsObject[questionCount].correct
+    //     let winDisplay = `<p class='winDisplay'>Yay! ${correct} is the right answer!`
+    //     $('.showAnswer').html(winDisplay)
+    //     $('.showAnswer').show()
+    //     $('.questionsBox').hide()
+    //     setTimeout(nextQuestion, 1000)
+    // }
+
+    // function wrongPick() {
+    //     incorrectAnswers++
+    //     let correct = questionsObject[questionCount].correct
+    //     let lossDisplay = `<p class='lossDisplay'>Wrong! The correct answer is ${correct}.`
+    //     $('.showAnswer').html(lossDisplay)
+    //     $('.showAnswer').show()
+    //     $('.questionsBox').hide()
+    //     setTimeout(nextQuestion, 1000)
+    // }
+
+    // function noPick() {
+    //     resetTimer()
+    //     unresponsive++
+    //     let correct = questionsObject[questionCount].correct
+    //     let unresDisplay = `<p class='unresDiplay'>You have not chosen a selection! But the correct answer is ${correct}.`
+    //     $('.showAnswer').html(unresDisplay)
+    //     $('.showAnswer').show()
+    //     $('.questionsBox').hide()
+    //     setTimeout(nextQuestion, 1000)
+    // }

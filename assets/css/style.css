@@ -4,20 +4,17 @@ body {
 
 }
 
-.introPage {
-    margin-left: 120px;
-}
-
 .title {
     font-family: 'Cabin Sketch';
     font-size: 80px;
+    text-align: center;
 }
 
 #animation {
     position: absolute;
     /* top: 530px; */
     top: 200px;
-    left: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
     font-family: monospace;
     /* font-size: 30px; */
@@ -33,7 +30,7 @@ body {
     font-size: 22px;
     position: fixed;
     text-align: center;
-    left: 590px;
+    left: 45%;
     bottom: 30px;
 }
 
@@ -43,6 +40,19 @@ body {
 }
 
 .questionsBox {
+    width: 350px;
+    height: 390px;
+    border: 2px solid rgb(248, 243, 246);
+    /* border-color: transparent; */
+    border-radius: 50px;
+    box-shadow: 20px 10px 10px rgb(248, 246, 248);
+    /* background: url("../images/colormarblebg.jpg"); */
+    background-color: rgb(221, 198, 217);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.showAnswer {
     width: 350px;
     height: 390px;
     border: 2px solid rgb(248, 243, 246);
@@ -111,11 +121,11 @@ body {
     margin-top: 10px;
 }
 
-.winDisplay {
+.display {
     font-family: 'Unica One';
     font-size: 40px;
     letter-spacing: 2px;
-    margin-top: 25%;
+    padding-top: 80px;
     color: rgb(146, 189, 185);
 }
 
@@ -157,9 +167,6 @@ body {
     }
     .questionsBox h1 {
         font-size: 80%;
-    }
-     #startGame, #resetGame {
-        left: 50%;
     }
 }
 
