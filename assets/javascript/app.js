@@ -2,7 +2,7 @@
 let correctAnswers = 0
 let incorrectAnswers = 0
 let unresponsive = 0
-let countdown = 15
+let countdown = 16
 let userSelection
 let questionCount = 0
 let gameTimer
@@ -21,7 +21,7 @@ let questionsObject = [{
     correct: "Ranch Dressing"
 }, {
     question: "What does Sandy never leave the house without?",
-    answers: ["SPF", "A Scrunchie", "Lip Balm", "Cash"],
+    answers: ["SPF", "Scrunchie", "Lip Balm", "Cash"],
     correct: "Lip Balm"
 }, {
     question: "What was Sandy's favorite subject in school?",
@@ -62,8 +62,7 @@ $(document).ready(function () {
     })
 
     $("#resetGame").click(function () {
-        $('.showAnswer').hide()
-        $('.questionsBox').show()
+        showQuestion()
         startGame()
     })
 
@@ -76,14 +75,14 @@ $(document).ready(function () {
             showPick('correct')
         } else {
             showPick('wrong')
-        } 
+        }
     })
 
-    $("#choices button").mouseenter(function() {
+    $("#choices button").mouseenter(function () {
         hover.play()
     })
 
-    function startGame () {
+    function startGame() {
         questionCount = 0
         correctAnswers = 0
         incorrectAnswers = 0
@@ -106,20 +105,27 @@ $(document).ready(function () {
             let count = (questionCount + 1) + " of " + $(questionsObject).length;
             return "<p>Question " + count + "</p>";
         })
-
     }
 
     //display next question after time runs out or user pick is selected
     function nextQuestion() {
         if (questionCount < questionsObject.length - 1) {
-            $('.questionsBox').show()
-            $('.showAnswer').hide()
+            showQuestion()
             questionCount++
-
             getQuestion()
         } else {
             endGame()
         }
+    }
+
+    function showQuestion() {
+        $('.questionsBox').show()
+        $('.showAnswer').hide()
+    }
+
+    function hideQuestion() {
+        $('.showAnswer').show()
+        $('.questionsBox').hide()
     }
 
     function showPick(result) {
@@ -141,35 +147,31 @@ $(document).ready(function () {
 
         $('.showAnswer').html(display)
         $('.showAnswer p').addClass("display")
-        $('.showAnswer').show()
-        $('.questionsBox').hide()
+        hideQuestion()
         setTimeout(nextQuestion, 1500)
     }
 
     function resetTimer() {
-        countdown = 15
+        countdown = 16
     }
 
     //shows the remaining seconds left
     function timer() {
-        if (questionCount === questionsObject.length) {
-            return endGame()
-        }
-
         if (countdown === 0) {
             showPick('noPick')
         } else if (countdown > 0) {
-            countdown-= 1
+            countdown--
         }
-        
+
         $("#timer").html(countdown + " Seconds Remaining")
     }
 
     function endGame() {
         clearInterval(gameTimer)
-        let display 
+        let display
         display = `<p>Correct: ${correctAnswers}! <br> Wrong: ${incorrectAnswers} <br> Unaswered: ${unresponsive}</p>`
         $('.showAnswer').html(display)
+        $('.showAnswer p').append(button)
         $('.showAnswer p').addClass("display")
         $("#resetGame").hide()
     }

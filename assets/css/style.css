@@ -1,7 +1,5 @@
 body {
     background: url("../images/marblebg.jpg");
-    /* no-repeat center center fixed; */
-
 }
 
 .title {
@@ -12,12 +10,10 @@ body {
 
 #animation {
     position: absolute;
-    /* top: 530px; */
     top: 200px;
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: monospace;
-    /* font-size: 30px; */
     font-size: 60px;
     letter-spacing: 8px;
     white-space: nowrap;
@@ -34,7 +30,6 @@ body {
     bottom: 30px;
 }
 
-
 .disappear {
     display: none;
 }
@@ -43,10 +38,8 @@ body {
     width: 350px;
     height: 390px;
     border: 2px solid rgb(248, 243, 246);
-    /* border-color: transparent; */
     border-radius: 50px;
     box-shadow: 20px 10px 10px rgb(248, 246, 248);
-    /* background: url("../images/colormarblebg.jpg"); */
     background-color: rgb(221, 198, 217);
     text-align: center;
     margin: 0 auto;
@@ -56,19 +49,24 @@ body {
     width: 350px;
     height: 390px;
     border: 2px solid rgb(248, 243, 246);
-    /* border-color: transparent; */
     border-radius: 50px;
     box-shadow: 20px 10px 10px rgb(248, 246, 248);
-    /* background: url("../images/colormarblebg.jpg"); */
     background-color: rgb(221, 198, 217);
     text-align: center;
     margin: 0 auto;
 }
 
+.display {
+    font-family: 'Unica One';
+    font-size: 40px;
+    letter-spacing: 2px;
+    padding-top: 80px;
+    color: rgb(146, 189, 185);
+}
+
 .questionsBox h1 {
     color: white;
     font-family: 'Cabin Sketch';
-    /* text-align: center; */
 }
 
 #question {
@@ -100,7 +98,6 @@ body {
 #btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover {
     cursor: pointer;
     background-color: rgb(235, 195, 202)
-    /* background-color: #acc7f0; */
 }
 
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus {
@@ -120,15 +117,6 @@ body {
     color: rgb(249, 246, 250);
     margin-top: 10px;
 }
-
-.display {
-    font-family: 'Unica One';
-    font-size: 40px;
-    letter-spacing: 2px;
-    padding-top: 80px;
-    color: rgb(146, 189, 185);
-}
-
 
 
 [col*="col-"] {
