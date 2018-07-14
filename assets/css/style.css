@@ -61,7 +61,29 @@ body {
     font-size: 40px;
     letter-spacing: 2px;
     padding-top: 80px;
-    color: rgb(146, 189, 185);
+    color: rgb(127, 179, 173);
+}
+
+.endDisplay {
+    font-family: 'Unica One';
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: rgb(238, 70, 148);
+    padding-top: 40px;
+}
+
+.endDisplay a {
+    color: white;
+    background-color: rgb(199, 164, 190);
+    font-size: 30px;
+    font-family: 'Cabin Sketch';
+    border: 1px solid #ba9bbb;
+    border-radius: 15px;
+}
+
+.endDisplay a:hover {
+    cursor: pointer;
+    background-color: rgb(173, 123, 161)
 }
 
 .questionsBox h1 {

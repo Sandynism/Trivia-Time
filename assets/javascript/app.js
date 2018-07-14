@@ -43,6 +43,10 @@ let questionsObject = [{
     question: "What are the names of Sandy's two dogs?",
     answers: ["Mike \u2665 Ike", "Choco \u2665 Aimee", "Prince \u2665 Princess", "Marshy \u2665 Mallo"],
     correct: "Choco \u2665 Aimee"
+}, {
+    question: "Where will Sandy be working at?",
+    answers: ["Your Company!", "Her Own Company", "Google", "Facebook"],
+    correct: "Your Company!"
 }]
 
 let hover = new Audio("assets/audio/hover.wav")
@@ -168,12 +172,17 @@ $(document).ready(function () {
 
     function endGame() {
         clearInterval(gameTimer)
-        let display
-        display = `<p>Correct: ${correctAnswers}! <br> Wrong: ${incorrectAnswers} <br> Unaswered: ${unresponsive}</p>`
-        $('.showAnswer').html(display)
-        $('.showAnswer p').append(button)
-        $('.showAnswer p').addClass("display")
+        let endDisplay
+        endDisplay = `<p>Correct: ${correctAnswers}! <br> Wrong: ${incorrectAnswers} <br> Unaswered: ${unresponsive}</p>`
+        
+        $('.showAnswer').html(endDisplay)
+        $(".showAnswer p").append($("<p>").html($("<a>").attr("href","https://www.github.com/Sandynism").text("Github")))
+        $('.showAnswer p').addClass("endDisplay")
         $("#resetGame").hide()
+
+
+
+       
     }
 })
 
