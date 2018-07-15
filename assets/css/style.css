@@ -78,7 +78,7 @@ body {
     font-size: 30px;
     font-family: 'Cabin Sketch';
     border: 1px solid #ba9bbb;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
 
 .endDisplay a:hover {
@@ -157,7 +157,7 @@ body {
     #hr1, #hr2, #hr3 {
         display: none;
     }
-    .questionsBox {
+    .questionsBox .showAnswer {
         height: 80%;
     }
     .questionsBox h1 {
@@ -167,7 +167,7 @@ body {
 
 @media (max-width: 768px) {
     #btn0, #btn1, #btn2, #btn3 {
-        font-size: 80%;
+        font-size: 90%;
     }
     .question, #timer, #progress {
         font-size: 18px;
@@ -177,6 +177,9 @@ body {
     }
     .questionsBox h1 {
         font-size: 80%;
+    }
+    .display, .endDisplay {
+        font-size: 20px;
     }
 }
 

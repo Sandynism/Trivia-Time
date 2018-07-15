@@ -66,8 +66,9 @@ $(document).ready(function () {
     })
 
     $("#resetGame").click(function () {
-        showQuestion()
-        startGame()
+        // showQuestion()
+        // startGame()
+        location.reload(true)
     })
 
     //check if user selection is correct or incorrect & track it
@@ -132,6 +133,7 @@ $(document).ready(function () {
         $('.questionsBox').hide()
     }
 
+    //displays the results after every question
     function showPick(result) {
 
         resetTimer()
@@ -140,19 +142,19 @@ $(document).ready(function () {
 
         if (result === 'noPick') {
             unresponsive++
-            display = `<p>You have not chosen a selection! But the correct answer is ${correct}.`
+            display = `<p>Time ran out! The correct answer is <b>${correct}</b>.`
         } else if (result === 'correct') {
             correctAnswers++
-            display = `<p>Yay! ${correct} is the right answer!`
+            display = `<p>Yay! <b>${correct}</b> is the correct answer!`
         } else if (result === 'wrong') {
             incorrectAnswers++
-            display = `<p>Wrong, You chose ${userSelection}! The correct answer is ${correct}.`
+            display = `<p>Wrong, you chose <b>${userSelection}</b>! The correct answer is <b>${correct}</b>.`
         }
 
         $('.showAnswer').html(display)
         $('.showAnswer p').addClass("display")
         hideQuestion()
-        setTimeout(nextQuestion, 1500)
+        setTimeout(nextQuestion, 2000)
     }
 
     function resetTimer() {
@@ -170,19 +172,18 @@ $(document).ready(function () {
         $("#timer").html(countdown + " Seconds Remaining")
     }
 
+    //displays the final game results. the unresponsive count is added to the incorrect total
     function endGame() {
         clearInterval(gameTimer)
+        let wrongAnswers = `${incorrectAnswers + unresponsive}`
         let endDisplay
-        endDisplay = `<p>Correct: ${correctAnswers}! <br> Wrong: ${incorrectAnswers} <br> Unaswered: ${unresponsive}</p>`
-        
+        // endDisplay = `<p>Correct: ${correctAnswers}! <br> Wrong: ${incorrectAnswers} <br> Unaswered: ${unresponsive}</p>`
+        endDisplay = `<p>Correct: ${correctAnswers} <br> Incorrect: ${wrongAnswers}</p>`
+
         $('.showAnswer').html(endDisplay)
-        $(".showAnswer p").append($("<p>").html($("<a>").attr("href","https://www.github.com/Sandynism").text("Github")))
+        $(".showAnswer p").append($("<p>").html($("<a>").attr("href","https://www.github.com/Sandynism").text("Check out my Github")))
         $('.showAnswer p').addClass("endDisplay")
-        $("#resetGame").hide()
-
-
-
-       
+        // $("#resetGame").hide()
     }
 })
 
