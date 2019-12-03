@@ -8,45 +8,45 @@ let questionCount = 0
 let gameTimer
 
 let questionsObject = [{
-    question: "What does Sandy have every single morning?",
-    answers: ["Bad Breath", "Green Juice", "Chicken and Waffles", "A Stretch Session"],
-    correct: "Green Juice"
+    question: "What does concat() do?",
+    answers: ["Returns char at index", "Merges 2+ strings", "Meows", "Cons People"],
+    correct: "Merges 2+ strings"
 }, {
-    question: "What is Sandy's favorite visited country?",
-    answers: ["Greece", "Japan", "Thailand", "Australia"],
-    correct: "Greece"
+    question: "Which of the following JS variable naming convention rules is false?",
+    answers: ["You cannot use reserved keywords", "It cannot start with a numeral", "Names are case sensitive", "Everything begins with name"],
+    correct: "Everything begins with name"
 }, {
-    question: "What is the oldest condiment in Sandy's fridge?",
-    answers: ["Dijon Mustard", "Sriracha", "Peter Lugers Steak Sauce", "Ranch Dressing"],
-    correct: "Ranch Dressing"
+    question: "What does push() do?",
+    answers: ["Shove someone", "Removes last element of an array", "Adds an element to end of array", "Returns specificed char"],
+    correct: "Adds an element to end of array"
 }, {
-    question: "What does Sandy never leave the house without?",
-    answers: ["SPF", "Scrunchie", "Lip Balm", "Cash"],
-    correct: "Lip Balm"
+    question: "Which one of these is a JS primitive data type?",
+    answers: ["Star", "Semicolon", "Undefined", "Function"],
+    correct: "Undefined"
 }, {
-    question: "What was Sandy's favorite subject in school?",
-    answers: ["Physics", "Biology", "Dance", "Asian Studies"],
-    correct: "Biology"
+    question: "What does the 2nd statement of a for loop do?",
+    answers: ["Sets variable before loop starts", "Executed every time", "Dance", "Defines condition for loop to run"],
+    correct: "Defines condition for loop to run"
 }, {
-    question: "What is Sandy's favorite color?",
-    answers: ["White", "Turquoise", "Pink", "Green"],
-    correct: "Turquoise"
+    question: "What does IFFE stand for in JavaScript?",
+    answers: ["Maybe", "If fruit flies yell", "Immediately invoked fuction expression", "Iffy"],
+    correct: "Immediately invoked fuction expression"
 }, {
-    question: "How many concerts has Sandy been to?",
-    answers: ["22", "1", "134", "368"],
-    correct: "134"
+    question: "What does JSX stand for?",
+    answers: ["JavaScript XML", "JavaScript X", "JavaScript XL", "JavaScript Xtra"],
+    correct: "JavaScript XML"
 }, {
-    question: "Who is Sandy's favorite musical act?",
-    answers: ["Illenium", "The Weeknd", "Ed Sheeran", "Above and Beyond"],
-    correct: "Above and Beyond"
+    question: "What are props in React?",
+    answers: ["Tools at the circus", "Read only components", "Objects", "Behavior"],
+    correct: "Read only components"
 }, {
-    question: "What are the names of Sandy's two dogs?",
-    answers: ["Mike \u2665 Ike", "Choco \u2665 Aimee", "Prince \u2665 Princess", "Marshy \u2665 Mallo"],
-    correct: "Choco \u2665 Aimee"
+    question: "How do you update the state of a component?",
+    answers: ["updateState()", "this.setState()", "setState()", "this.state()"],
+    correct: "this.setState()"
 }, {
-    question: "Where will Sandy be working at?",
-    answers: ["Your Company!", "Her Own Company", "Google", "Facebook"],
-    correct: "Your Company!"
+    question: "When is componentDidMount() called?",
+    answers: ["After all elements are rendered", "Right away", "After setTimeout()", "Before all elements are rendered"],
+    correct: "After all elements are rendered"
 }]
 
 let hover = new Audio("assets/audio/hover.wav")
